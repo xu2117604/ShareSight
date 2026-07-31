@@ -42,7 +42,7 @@ export async function DELETE(request: Request, context: { params: Promise<{ id: 
       ).bind(id),
     ]);
 
-    const objectKeys = storedFiles.results.map((file) => file.objectKey);
+   const objectKeys = storedFiles.results.map((file: any) => file.objectKey);
     for (let index = 0; index < objectKeys.length; index += 1000) {
       await FILES.delete(objectKeys.slice(index, index + 1000));
     }
